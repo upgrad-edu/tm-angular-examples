@@ -1,6 +1,11 @@
 export interface Card {
-    title: string;
-    description: string;
-    moreLink: string;
-    shoiwsLinks: string;
+    coverURL: '',
+    description: '',
+    duration: '',
+    languageId: '',
+    name: '',
+    releaseDate: '',
+    statusId: '',
+    theatres: [],
+    trailerURL: ''
 }

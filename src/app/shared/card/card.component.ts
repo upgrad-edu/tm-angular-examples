@@ -13,13 +13,13 @@ import { Card } from './card';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
-  @Input('data') data: Card;
+  @Input('card') card: Card;
   constructor() {}
 
   ngOnInit(): void {}
 
   ngOnChanges() {
-    console.log(`ngOnChanges - data is ${this.data}`);
+    console.log(`ngOnChanges - data is ${this.card}`);
   }
   ngDoCheck() {
     console.log('ngDoCheck');
