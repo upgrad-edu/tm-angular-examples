@@ -1,11 +1,11 @@
 export interface Card {
-    coverURL: '',
-    description: '',
-    duration: '',
-    languageId: '',
-    name: '',
-    releaseDate: '',
-    statusId: '',
+    coverURL: string,
+    description: string,
+    duration: string,
+    languageId: string,
+    name: string,
+    releaseDate: string,
+    statusId: string,
     theatres: [],
-    trailerURL: ''
+    trailerURL: string
 }

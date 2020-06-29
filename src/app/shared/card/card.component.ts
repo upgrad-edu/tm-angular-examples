@@ -13,7 +13,17 @@ import { Card } from './card';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
-  @Input('card') card: Card;
+  card: Card = {
+    coverURL: 'https://m.media-amazon.com/images/M/MV5BMTc4NDkyODE3M15BMl5BanBnXkFtZTgwMTAwNDczMjE@._V1_.jpg',
+    description: `A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.`,
+    duration: null,
+    languageId: null,
+    name: 'Interstellar',
+    releaseDate: null,
+    statusId: null,
+    theatres: null,
+    trailerURL: null
+  };
   constructor() {}
 
   ngOnInit(): void {}
