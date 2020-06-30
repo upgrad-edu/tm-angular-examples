@@ -1,0 +1,11 @@
+.home-wrapper {
+    margin: 15px 0;
+}
+
+.breadcrumb {
+    background: linear-gradient(90deg, #020024 0%, #17a2b8 35%, #fff 100%);
+    box-shadow: 0px 4px 17px -7px rgba(0,0,0,0.75);
+    .breadcrumb-item.active {
+        color: #fff;
+    }
+}
