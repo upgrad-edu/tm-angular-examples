@@ -8,4 +8,5 @@ export interface Movie {
   languageId: string;
   statusId: string;
   theatres: any[];
+  id: number;
 }

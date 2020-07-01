@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
     releaseDate: '',
     statusId: '',
     theatres: [],
-    trailerURL: ''
+    trailerURL: '',
+    id: 13
   }, {
     coverURL: 'https://m.media-amazon.com/images/M/MV5BMTY2NDg4NTI0Ml5BMl5BanBnXkFtZTgwODczNDQ1MDI@._V1_.jpg',
     description: 'A linguist is recruited by the military to communicate with alien lifeforms after twelve mysterious spacecrafts land around the world.',
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit {
     releaseDate: '',
     statusId: '',
     theatres: [],
-    trailerURL: ''
+    trailerURL: '',
+    id: 14
   }];
 
   upcomingMovies: Movie[] = [{
@@ -37,7 +39,8 @@ export class HomeComponent implements OnInit {
     releaseDate: '',
     statusId: '',
     theatres: [],
-    trailerURL: ''
+    trailerURL: '',
+    id: 15
   }, {
     coverURL: 'https://m.media-amazon.com/images/M/MV5BNDhiZTE2NjUtMDlkNS00NGI5LWJkMjYtMjJhNzRhZmFkYTUxXkEyXkFqcGdeQXVyNjMwMzc3MjE@._V1_UX182_CR0,0,182,268_AL__QL50.jpg',
     description: 'Armed with only one word -- Tenet -- and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.',
@@ -47,7 +50,8 @@ export class HomeComponent implements OnInit {
     releaseDate: '',
     statusId: '',
     theatres: [],
-    trailerURL: ''
+    trailerURL: '',
+    id: 16
   }, {
     coverURL: 'https://m.media-amazon.com/images/M/MV5BNzM0OGZiZWItYmZiNC00NDgzLTg1MjMtYjM4MWZhOGZhMDUwXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL__QL50.jpg',
     description: 'A crew of oceanic researchers working for a deep sea drilling company try to get to safety after a mysterious earthquake devastates their deepwater research and drilling facility located at the bottom of the Mariana Trench.',
@@ -57,7 +61,8 @@ export class HomeComponent implements OnInit {
     releaseDate: '',
     statusId: '',
     theatres: [],
-    trailerURL: ''
+    trailerURL: '',
+    id: 16
   }];
   constructor() {}
 
