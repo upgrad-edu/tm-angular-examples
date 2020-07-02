@@ -1,0 +1,52 @@
+<div class="rowm margin-1">
+  <div class="col-sm-12">
+    <button
+      type="submit"
+      style="position: absolute;"
+      class="btn btn-sm btn-outline-secondary"
+      (click)="goBack()"
+    >
+      Back
+    </button>
+    <h2 class="text-center font-weight-light">
+      List of Shows for {{ shows[0].name }}
+    </h2>
+  </div>
+</div>
+<table class="table">
+  <tbody>
+    <tr *ngFor="let show of shows">
+      <td>
+        <img
+          src="{{ show.coverPhotoURL }}"
+          style="max-width: 200px;"
+          class="card-img-top img-thumbnail clickable"
+          alt="..."
+        />
+      </td>
+      <td>
+        <div>
+          Showtime: <strong>03:00 PM - 05:15 PM</strong> <br />
+          Theatre: <strong>Jubliee Plex 2</strong><br />
+          Ticket Price: <strong>450 INR</strong><br />
+        </div>
+      </td>
+      <td>
+        Number of Tickets:
+        <select name="numbers">
+          <option *ngFor="let count of numbers" [value]="count">{{
+            count
+          }}</option>
+        </select>
+        <button
+          type="submit"
+          style="position: absolute;"
+          class="btn btn-sm btn-outline-success btn-xs"
+          (click)="goBack()"
+        >
+          Book
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

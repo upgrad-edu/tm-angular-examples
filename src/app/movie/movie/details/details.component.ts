@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { Movie } from 'src/app/shared/interface/movie';
+import {Router} from "@angular/router";
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss'],
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss'],
 })
-export class MovieComponent implements OnInit {
+export class DetailsComponent implements OnInit {
+  safeTrailerUrl: SafeResourceUrl = null;
   movie: Movie = {
     coverURL:
       'https://m.media-amazon.com/images/M/MV5BMTc4NDkyODE3M15BMl5BanBnXkFtZTgwMTAwNDczMjE@._V1_.jpg',
@@ -20,11 +22,15 @@ export class MovieComponent implements OnInit {
     trailerURL: 'https://www.youtube.com/embed/zSWdZVtXT7E',
     id: 13,
   };
-  constructor(
-    private route: ActivatedRoute
-  ) {
-    this.route.params.subscribe((params) => console.log(params));
+  constructor(private domSanitizer: DomSanitizer, private router: Router) {
+    this.safeTrailerUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
+      this.movie.trailerURL
+    );
   }
 
   ngOnInit(): void {}
+
+  viewShows() {
+    this.router.navigate([`movie/${this.movie.id}/shows`])
+  }
 }

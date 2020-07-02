@@ -30,4 +30,8 @@ export class CardComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
   ngOnDestroy() {
     console.log('ngOnDestroy');
   }
+
+  viewShows() {
+    this.router.navigate([`movie/${this.card.id}/shows`])
+  }
 }
