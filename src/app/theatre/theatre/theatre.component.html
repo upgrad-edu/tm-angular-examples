@@ -17,17 +17,15 @@
   <div class="col-md-6 offset-md-3">
     <form novalidate (ngSubmit)="addTheatre()" [formGroup]="theatreForm">
       <div class="form-group row">
-        <label for="name" class="col-sm-2 col-form-label col-form-label-sm"
+        <label for="name" class="col-sm-3 col-form-label col-form-label-sm"
           >Theatre Name</label
         >
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input
             type="text"
             class="form-control form-control-sm"
             id="name"
             placeholder="Movie Name (required)"
-            required
-            minlength="3"
             formControlName="theatreName"
             [ngClass]="{
               'is-invalid':
@@ -47,31 +45,34 @@
         </div>
       </div>
       <div class="form-group row">
-        <label
-          for="duration"
-          class="col-sm-2 col-form-label col-form-label-sm"
-          required
+        <label for="duration" class="col-sm-3 col-form-label col-form-label-sm"
           >Number of Seats</label
         >
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input
             type="number"
             class="form-control form-control-sm"
             id="noOfSeats"
-            required
-            minlength="1"
             formControlName="noOfSeats"
+            [ngClass]="{
+              'is-invalid':
+                (theatreForm.get('noOfSeats').touched ||
+                  theatreForm.get('noOfSeats').dirty) &&
+                !theatreForm.get('noOfSeats').valid
+            }"
           />
+          <span class="invalid-feedback">
+            <span *ngIf="theatreForm.get('noOfSeats').errors?.range">
+              Valid range is 1 to 200.
+            </span>
+          </span>
         </div>
       </div>
       <div class="form-group row">
-        <label
-          for="name"
-          class="col-sm-2 col-form-label col-form-label-sm"
-          required
+        <label for="name" class="col-sm-3 col-form-label col-form-label-sm"
           >Price</label
         >
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input
             type="number"
             class="form-control form-control-sm"
@@ -81,17 +82,15 @@
         </div>
       </div>
       <div class="form-group row">
-        <label
-          for="name"
-          class="col-sm-2 col-form-label col-form-label-sm"
+        <label for="name" class="col-sm-3 col-form-label col-form-label-sm"
           >City</label
         >
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <select
             formControlName="cityId"
             class="custom-select custom-select-sm mb-3"
           >
-            <option selected>Open this select menu</option>
+            <option value="0">Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -99,17 +98,21 @@
         </div>
       </div>
       <div class="form-group row">
-        <label
-          for="name"
-          class="col-sm-2 col-form-label col-form-label-sm"
+        <label for="name" class="col-sm-3 col-form-label col-form-label-sm"
           >Movie</label
         >
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <select
             formControlName="movieId"
             class="custom-select custom-select-sm mb-3"
+            [ngClass]="{
+              'is-invalid':
+                (theatreForm.get('movieId').touched ||
+                  theatreForm.get('movieId').dirty) &&
+                !theatreForm.get('movieId').valid
+            }"
           >
-            <option selected>Open this select menu</option>
+            <option value="0">Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -117,15 +120,17 @@
         </div>
       </div>
       <div class="form-group row">
-        <label
-          for="name"
-          class="col-sm-2 col-form-label col-form-label-sm"
-          
+        <label for="name" class="col-sm-3 col-form-label col-form-label-sm"
           >Bookings</label
         >
-        <div class="col-sm-10">
-          <select formControlName="bookings" class="custom-select" multiple>
-            <option disabled selected>Select multiple using shift</option>
+        <div class="col-sm-9">
+          <select
+            formControlName="bookings"
+            class="custom-select"
+            (change)="updateValidator()"
+            multiple
+          >
+            <option disabled>Select multiple using shift</option>
             <option value="1">Booking Desc.</option>
             <option value="2">Booking Desc.</option>
             <option value="3">Booking Desc.</option>

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TheatreComponent } from './theatre/theatre.component';
 
 const routes: Routes = [
-  {path: 'theatre', pathMatch: 'full', component: TheatreComponent},
+  {path: 'theatre/add', pathMatch: 'full', component: TheatreComponent},
 ];
 
 @NgModule({
