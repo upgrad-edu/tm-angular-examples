@@ -8,11 +8,23 @@ import { HomeModule } from './home/home.module';
 import { MovieModule } from './movie/movie.module';
 import { CustomerModule } from './customer/customer.module';
 import { TheatreModule } from './theatre/theatre.module';
+import { CustomInterceptorService } from './core/services/custom-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, HomeModule, MovieModule, CustomerModule, TheatreModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    HomeModule,
+    MovieModule,
+    CustomerModule,
+    TheatreModule,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CustomInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

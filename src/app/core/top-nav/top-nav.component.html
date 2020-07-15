@@ -48,9 +48,7 @@
           Saurav Kumar
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">My Bookings</a>
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item clickable" (click)="viewLink(link)" *ngFor="let link of navLinks">{{ link.label }}</a>
         </div>
       </li>
     </ul>
