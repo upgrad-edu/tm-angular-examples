@@ -10,9 +10,9 @@ Developing Responsive Single Page Application using Angular (Examples) - upGrad'
 | day2     | Components    |
 
 # How to run the code?
-Clone this repository
-Open the code in VS Code Editor
-Press ctrl + ~ to open terminal, and type following commands - 
+ - Clone this repository
+ - Open the code in VS Code Editor
+ - Press ctrl + ~ to open terminal, and type following commands - 
 ```
 npm install <-- installs all dependencies and dev dependencies
 npm run start <-- runs the application at http://localhost:4200
