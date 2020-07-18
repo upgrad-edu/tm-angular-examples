@@ -34,7 +34,7 @@
         </form>
       </li>
     </ul>
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto" *ngIf="user && user.firstName">
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
@@ -45,7 +45,7 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Saurav Kumar
+          {{user ? user.firstName : 'Not Logged In'}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item clickable" (click)="viewLink(link)" *ngFor="let link of navLinks">{{ link.label }}</a>

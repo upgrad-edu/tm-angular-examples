@@ -82,6 +82,9 @@
           </button>
         </div>
       </div>
+      <div *ngIf="loginError" class="alert alert-danger margin-15" role="alert">
+        {{ this.loginError }}
+      </div>
     </form>
   </div>
 </div>

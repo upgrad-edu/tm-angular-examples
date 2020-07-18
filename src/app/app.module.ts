@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -10,6 +9,7 @@ import { CustomerModule } from './customer/customer.module';
 import { TheatreModule } from './theatre/theatre.module';
 import { CustomInterceptorService } from './core/services/custom-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,6 +20,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     MovieModule,
     CustomerModule,
     TheatreModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
