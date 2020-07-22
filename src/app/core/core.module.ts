@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './components/signup/signup.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { RouterModule } from '@angular/router'
 @NgModule({
   declarations: [
     TopNavComponent,
@@ -14,7 +15,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     LoginComponent,
     SignupComponent,
   ],
-  imports: [CommonModule, FormsModule, BsDatepickerModule.forRoot(), BrowserAnimationsModule],
+  imports: [CommonModule, FormsModule, BsDatepickerModule.forRoot(), BrowserAnimationsModule, RouterModule],
   exports: [TopNavComponent],
 })
 export class CoreModule {}

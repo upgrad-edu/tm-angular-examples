@@ -45,12 +45,21 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {{user ? user.firstName : 'Not Logged In'}}
+          {{ user ? user.firstName : "Not Logged In" }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item clickable" (click)="viewLink(link)" *ngFor="let link of navLinks">{{ link.label }}</a>
+          <a
+            class="dropdown-item clickable"
+            (click)="viewLink(link)"
+            *ngFor="let link of navLinks"
+            >{{ link.label }}</a
+          >
         </div>
       </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="!user || !user.firstName" >
+        <a class="btn btn-sm btn-primary clickable" [routerLink]="'/login'">Login</a> | 
+        <a class="btn btn-sm btn-primary clickable" [routerLink]="'/signup'">Signup</a>
     </ul>
   </div>
 </nav>

@@ -6,7 +6,7 @@ export class Signup {
   dateOfBirth: string;
   phoneNumbers: string[];
   userTypeId: string;
-  bookings: [];
+  bookingIds: [];
 
   constructor(
     firstName: string = '',
@@ -16,7 +16,7 @@ export class Signup {
     dateOfBirth: string = '',
     phoneNumbers: string[] = [],
     userTypeId: string = '',
-    bookings: [] = []
+    bookingIds: [] = []
   ) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -25,12 +25,12 @@ export class Signup {
     this.dateOfBirth = dateOfBirth;
     this.phoneNumbers = phoneNumbers;
     this.userTypeId = userTypeId;
-    this.bookings = bookings;
+    this.bookingIds = bookingIds;
   }
 }
 
 export interface SignupResponseData {
-  bookings: string[];
+  bookingIds: string[];
   customerId: number;
   dateOfBirth: number;
   firstName: string;

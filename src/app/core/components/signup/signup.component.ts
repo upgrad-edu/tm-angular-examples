@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SignupService } from './signup.service';
 import { Router } from '@angular/router';
@@ -9,12 +9,19 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
   signup = new Signup();
   signupError: HttpErrorResponse = null;
+  routeSubs: any;
   constructor(private signupService: SignupService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  ngOnDestroy() {
+    if (this.routeSubs) {
+      this.routeSubs.unsubscribe();
+    }
+  }
 
   signupUser(signupForm: NgForm): void {
     console.log(signupForm.form);
@@ -26,11 +33,17 @@ export class SignupComponent implements OnInit {
         console.log(res);
         this.router.navigate(['/login']);
       },
-      (err: HttpErrorResponse) => (this.signupError = err.error.error)
+      (err) => {
+        console.log(err);
+        this.signupError =
+          err.error && err.error.errorMessage
+            ? err.error.errorMessage
+            : err.error.error;
+      }
     );
   }
 
   formatRequest() {
-    this.signup.userTypeId = '6';//customer
+    this.signup.userTypeId = this.router.url.indexOf('admin') > -1 ? '2' : '1'; //customer and 2 for Admin
   }
 }

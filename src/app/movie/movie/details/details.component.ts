@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { Movie } from 'src/app/shared/interface/movie';
-import {Router} from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
+import { DetailsService } from './details.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -17,20 +19,46 @@ export class DetailsComponent implements OnInit {
     languageId: 'EN',
     name: 'Interstellar',
     releaseDate: '2014-11-07',
-    statusId: '',
-    theatres: [],
+    statusId: null,
+    theatreId: [],
     trailerURL: 'https://www.youtube.com/embed/zSWdZVtXT7E',
-    id: 13,
+    movieId: 13,
   };
-  constructor(private domSanitizer: DomSanitizer, private router: Router) {
+  constructor(
+    private domSanitizer: DomSanitizer,
+    private router: Router,
+    private detailsService: DetailsService,
+    private activatedRoute: ActivatedRoute,
+    private location: Location
+  ) {
     this.safeTrailerUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
       this.movie.trailerURL
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((res) => this.getMovieDetails(res.id));
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  getMovieDetails(movieId: number) {
+    this.detailsService.movieDetails(movieId).subscribe((res: Movie) => {
+      this.movie = this.formatData(res);
+    });
+  }
+
+  formatData(movie: Movie) {
+    const movieDetails = movie;
+
+    movieDetails.releaseDate = new Date(movie.releaseDate).toISOString().split('T')[0];
+
+    return movieDetails;
+  }
 
   viewShows() {
-    this.router.navigate([`movie/${this.movie.id}/shows`])
+    this.router.navigate([`movie/${this.movie.movieId}/shows`]);
   }
 }

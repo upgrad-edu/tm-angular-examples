@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:7070/movie_app/v1/'
+  hosturl: 'http://localhost:7070/movie_app/v1/'
 };
 
 /*

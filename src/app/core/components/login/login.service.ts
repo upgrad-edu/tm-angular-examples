@@ -9,12 +9,13 @@ import { Login, User } from './login';
 import { Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
+import { API } from '../../../shared/service/api';
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   user = new Subject<User>();
-  api = environment.api;
+  hosturl = environment.hosturl;
 
   constructor(
     private httpClient: HttpClient,
@@ -22,18 +23,17 @@ export class LoginService {
   ) {}
 
   login(loginDetail: Login) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-
-    return this.httpClient.post(`${this.api}access-tokens`, loginDetail).pipe(
-      catchError(this.errorHandler),
-      tap((response: User) => {
-        const user = new User(response);
-        this.authenticationService.setUser(response);
-        this.authenticationService.setToken(response.jwtToken);
-        this.user.next(user);
-      })
-    );
+    return this.httpClient
+      .post(`${this.hosturl}${API.LOGIN}`, loginDetail)
+      .pipe(
+        catchError(this.errorHandler),
+        tap((response: User) => {
+          const user = new User(response);
+          this.authenticationService.setUser(response);
+          this.authenticationService.setToken(response.jwtToken);
+          this.user.next(user);
+        })
+      );
   }
 
   private errorHandler(errorRes: HttpErrorResponse) {

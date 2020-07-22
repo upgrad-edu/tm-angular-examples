@@ -17,7 +17,7 @@ export class CardComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
   @Input('card') card: Movie;
   constructor(private router: Router) {}
   moreDetails() {
-    this.router.navigate([`movie/${this.card.id}`])
+    this.router.navigate([`movie/${this.card.movieId}`])
   }
   ngOnInit(): void {}
 
@@ -32,6 +32,6 @@ export class CardComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
   }
 
   viewShows() {
-    this.router.navigate([`movie/${this.card.id}/shows`])
+    this.router.navigate([`movie/${this.card.movieId}/shows`])
   }
 }

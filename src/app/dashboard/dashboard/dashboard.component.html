@@ -1,0 +1,35 @@
+<div class="padding-top-15 padding-bottom-15">
+  <div class="col-sm-12">
+    <h2 class="text-center font-weight-light">
+      Admin Dashboard
+    </h2>
+  </div>
+</div>
+<div class="container">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Release Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Theatres</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movies">
+          <th scope="row">{{ movie.name }}</th>
+          <td>{{ movie.releaseDate }}</td>
+          <td>{{ movie.statusId === "1" ? "Release" : "Upcoming" }}</td>
+          <td>{{ movie.theareIds }}</td>
+          <td>
+            <button type="button" (click)="edit(movie)" class="btn btn-sm btn-secondary">
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

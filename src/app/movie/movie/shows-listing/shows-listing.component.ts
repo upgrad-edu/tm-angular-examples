@@ -58,4 +58,8 @@ export class ShowsListingComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+  book(show) {
+    console.log(show)
+  }
 }

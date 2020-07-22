@@ -9,7 +9,8 @@ import { CustomerModule } from './customer/customer.module';
 import { TheatreModule } from './theatre/theatre.module';
 import { CustomInterceptorService } from './core/services/custom-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { DashboardModule } from './dashboard/dashboard.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http'
     MovieModule,
     CustomerModule,
     TheatreModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

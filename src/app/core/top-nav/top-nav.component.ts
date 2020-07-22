@@ -10,14 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-nav.component.scss'],
 })
 export class TopNavComponent implements OnInit {
-  navLinks = [
-    {
-      label: 'Profile',
-      route: 'profile',
-    },
+  navLinks = [];
+  customerNavLinks = [
     {
       label: 'My Bookings',
       route: 'bookings',
+    },
+    {
+      label: 'Logout',
+      route: 'login',
+    },
+  ];
+  adminNavLinks = [
+    {
+      label: 'Dashboard',
+      route: 'dashboard',
     },
     {
       label: 'Logout',
@@ -35,10 +42,20 @@ export class TopNavComponent implements OnInit {
   ngOnInit(): void {
     this.userSub = this.loginService.user.subscribe((user) => {
       this.user = user;
+      this.updateNavLinks();
     });
 
     if (!this.user) {
       this.user = this.authenticationService.getUser();
+      this.updateNavLinks();
+    }
+  }
+
+  updateNavLinks() {
+    if (this.user.userTypeId === 2) {
+      this.navLinks = this.adminNavLinks;
+    } else {
+      this.navLinks = this.customerNavLinks;
     }
   }
 
@@ -47,9 +64,10 @@ export class TopNavComponent implements OnInit {
     switch (link.route) {
       case 'login':
         this.authenticationService.logout();
-        this.router.navigate(['login']);
         break;
-
+      case 'dashboard':
+        this.router.navigate(['/dashboard']);
+        break;
       default:
         break;
     }

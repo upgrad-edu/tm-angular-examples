@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 import { catchError, tap, map } from 'rxjs/operators';
 @Injectable()
 export class ApiService {
-  private baseUrl = environment.api;
+  private baseUrl = environment.hosturl;
 
   constructor(private http: HttpClient) {}
 

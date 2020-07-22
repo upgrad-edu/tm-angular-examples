@@ -8,8 +8,9 @@ import { AddComponent } from './movie/add/add.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { BookComponent } from './movie/book/book.component';
 @NgModule({
-  declarations: [MovieComponent, ShowsListingComponent, DetailsComponent, AddComponent],
+  declarations: [MovieComponent, ShowsListingComponent, DetailsComponent, AddComponent, BookComponent],
   imports: [
     CommonModule,
     MovieRoutingModule,

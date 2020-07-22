@@ -3,16 +3,16 @@ export class Movie {
     description: string;
     duration: string;
     name: string;
-    releaseDate: string;
+    releaseDate: Date;
     trailerURL: string;
     languageId: string;
     statusId: string;
-    theatres: any[];
-    id?: number;
+    theatreIds: any[];
+    movieId?: number;
   
     constructor(coverURL: string = '', description: string = '', 
-      duration: string = '', name: string = '', releaseDate: string = '',
-      trailerURL: string = '', languageId: string = '', statusId: string = '', theatres: any[] = []
+      duration: string = '', name: string = '', releaseDate: Date = null,
+      trailerURL: string = '', languageId: string = '', statusId: string = '', theatreIds: any[] = []
     ) {
       this.coverURL = coverURL;
       this.description = description;
@@ -22,7 +22,7 @@ export class Movie {
       this.trailerURL = trailerURL;
       this.languageId = languageId;
       this.statusId = statusId;
-      this.theatres = theatres;
+      this.theatreIds = theatreIds;
     }
   }
   
