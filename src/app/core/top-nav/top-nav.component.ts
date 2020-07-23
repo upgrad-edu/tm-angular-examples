@@ -52,7 +52,7 @@ export class TopNavComponent implements OnInit {
   }
 
   updateNavLinks() {
-    if (this.user.userTypeId === 2) {
+    if (this.user && this.user.userTypeId === 2) {
       this.navLinks = this.adminNavLinks;
     } else {
       this.navLinks = this.customerNavLinks;
