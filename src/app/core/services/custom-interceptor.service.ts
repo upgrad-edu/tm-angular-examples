@@ -10,12 +10,16 @@ import { AuthenticationService } from './authentication.service';
 @Injectable()
 export class CustomInterceptorService implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) {}
-  apisToSkip = ['access-tokens', 'v1/customers', 'v1/movies/'];
+  apisToSkip = ['access-tokens', 'v1/customers'];
 
   skipRoute(api, request) {
-    if (request.url.indexOf(api) > -1 && request.method !== 'PUT') { // added to cope with existing design of endpoints.
+    console.log(request);
+    if (request.url.indexOf(api) > -1) {// added to cope with existing design of endpoints.
       return true;
     } else {
+      if (request.method === 'GET') {
+        return true;
+      }
       return false;
     }
   }
