@@ -6,19 +6,29 @@ import { DetailsComponent } from './movie/details/details.component';
 import { AddComponent } from './movie/add/add.component';
 import { AuthGuardService } from '../core/services/auth-guard.service';
 import { BookComponent } from './movie/book/book.component';
+import { SearchComponent } from './movie/search/search.component';
 const routes: Routes = [
   {
     path: 'movie',
     component: MovieComponent,
     children: [
-      { path: 'edit/:movieId',  component: AddComponent, canActivate: [AuthGuardService] },
-      { path: 'book/:movieId',  component: BookComponent, canActivate: [AuthGuardService] },
-      { path: 'add',  component: AddComponent, canActivate: [AuthGuardService] },
-      { path: ':id',  component: DetailsComponent },
       {
-        path: ':id/shows',
+        path: 'edit/:movieId',
+        component: AddComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'book',
+        component: BookComponent,
+        canActivate: [AuthGuardService],
+      },
+      { path: 'add', component: AddComponent, canActivate: [AuthGuardService] },
+      { path: ':id', component: DetailsComponent },
+      {
+        path: ':movieId/shows',
         component: ShowsListingComponent,
       },
+      { path: 'search/:movieName', component: SearchComponent },
     ],
   },
 ];

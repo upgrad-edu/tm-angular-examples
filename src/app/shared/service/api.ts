@@ -1,5 +1,6 @@
 export const API = {
     LOGIN: 'access-tokens',
     MOVIE: 'movies',
-    SIGNUP: 'customers'
+    SIGNUP: 'customers',
+    BOOK: 'bookings'
 }

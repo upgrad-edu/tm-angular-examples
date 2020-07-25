@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-nav.component.scss'],
 })
 export class TopNavComponent implements OnInit {
+  movieName: string = null;
   navLinks = [];
   customerNavLinks = [
     {
@@ -49,6 +50,10 @@ export class TopNavComponent implements OnInit {
       this.user = this.authenticationService.getUser();
       this.updateNavLinks();
     }
+  }
+
+  searchMovie() {
+    this.router.navigate([`/movie/search/${this.movieName}`])
   }
 
   updateNavLinks() {

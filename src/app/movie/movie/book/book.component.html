@@ -9,7 +9,36 @@
       Back
     </button>
     <h2 class="text-center font-weight-light">
-      Book - {{ movie.name }}
+      Booking Summary - {{ bookingRequest?.name }}
     </h2>
+  </div>
+</div>
+
+<div class="row margin-1">
+  <div class="col-md-4 offset-md-4">
+    <ul class="list-group">
+      <li class="list-group-item">
+        Movie Name: <strong>{{ bookingRequest?.name }}</strong>
+      </li>
+      <li class="list-group-item">
+        Booking Date: <strong>{{ bookingRequest?.bookingDate }}</strong>
+      </li>
+      <li class="list-group-item">
+        Number of Seats: <strong>{{ bookingRequest?.noOfSeats }}</strong>
+      </li>
+      <li class="list-group-item">
+        Total Price: <strong>{{ bookingRequest?.noOfSeats * 450 }}</strong>
+      </li>
+      <li class="list-group-item">
+         Complete Booking 
+        <button
+          type="submit"
+          class="btn btn-sm btn-outline-success btn-xs"
+          (click)="bookMovie()"
+        >
+          Book
+        </button>
+      </li>
+    </ul>
   </div>
 </div>

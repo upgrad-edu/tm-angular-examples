@@ -1,0 +1,27 @@
+<div class="padding-top-15 padding-bottom-15">
+  <div class="col-sm-12">
+    <button
+      type="submit"
+      style="position: absolute;"
+      class="btn btn-sm btn-outline-secondary"
+      (click)="goBack()"
+    >
+      Back
+    </button>
+    <h2 class="text-center font-weight-light">
+      Movie Search Result
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <ag-grid-angular
+      style="height: 500px;"
+      class="ag-theme-alpine"
+      [rowData]="rowData"
+      [columnDefs]="columnDefs"
+      (rowClicked)="onRowClicked($event)"
+    >
+    </ag-grid-angular>
+  </div>
+</div>

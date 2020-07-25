@@ -9,44 +9,73 @@
       Back
     </button>
     <h2 class="text-center font-weight-light">
-      List of Shows for {{ shows[0].name }}
+      List of Shows for {{ movie?.name }}
     </h2>
   </div>
 </div>
-<table class="table">
-  <tbody>
-    <tr *ngFor="let show of shows">
-      <td>
-        <img
-          src="{{ show.coverPhotoURL }}"
-          style="max-width: 200px;"
-          class="card-img-top img-thumbnail clickable"
-          alt="..."
-        />
-      </td>
-      <td>
-        <div>
-          Showtime: <strong>03:00 PM - 05:15 PM</strong> <br />
-          Theatre: <strong>Jubliee Plex 2</strong><br />
-          Ticket Price: <strong>450 INR</strong><br />
-        </div>
-      </td>
-      <td>
-        Number of Tickets:
-        <select name="numbers">
-          <option *ngFor="let count of numbers" [value]="count">{{
-            count
-          }}</option>
-        </select>
-        <button
-          type="submit"
-          style="position: absolute;"
-          class="btn btn-sm btn-outline-success btn-xs"
-          (click)="book(show)"
-        >
-          Book
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="col-md-8 offset-md-2">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <img
+            src="{{ movie?.coverURL }}"
+            style="max-width: 200px;"
+            class="card-img-top img-thumbnail clickable"
+            alt="..."
+          />
+        </td>
+        <td>
+          <div>
+            Showtime: <strong>03:00 PM - 05:15 PM</strong> <br />
+            Theatre: <strong>Jubliee Plex 2</strong><br />
+            Ticket Price: <strong>450 INR</strong><br />
+          </div>
+        </td>
+        <td>
+          <div class="form-group row">
+            <label for="noOdSeats" class="col-sm-4 col-form-label"
+              >Number of Tickets:</label
+            >
+            <div class="col-sm-4">
+              <select
+                name="numbers"
+                class="form-control"
+                [(ngModel)]="noOfSeats"
+              >
+                <option *ngFor="let count of numbers" [value]="count">{{
+                  count
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="bookingDate" class="col-sm-4 col-form-label"
+              >Booking Date:</label
+            >
+            <div class="col-sm-4">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="bookingDate"
+                bsDatepicker
+                name="bookingDate"
+                [(ngModel)]="bookingDate"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <button
+              type="submit"
+              style="position: absolute;"
+              class="btn btn-sm btn-outline-success btn-xs"
+              (click)="book()"
+            >
+              Book
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
