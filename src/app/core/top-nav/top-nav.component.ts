@@ -15,7 +15,7 @@ export class TopNavComponent implements OnInit {
   customerNavLinks = [
     {
       label: 'My Bookings',
-      route: 'bookings',
+      route: 'customer',
     },
     {
       label: 'Logout',
@@ -53,7 +53,7 @@ export class TopNavComponent implements OnInit {
   }
 
   searchMovie() {
-    this.router.navigate([`/movie/search/${this.movieName}`])
+    this.router.navigate([`/movie/search/${this.movieName}`]);
   }
 
   updateNavLinks() {
@@ -72,6 +72,9 @@ export class TopNavComponent implements OnInit {
         break;
       case 'dashboard':
         this.router.navigate(['/dashboard']);
+        break;
+      case 'customer':
+        this.router.navigate(['/customer']);
         break;
       default:
         break;

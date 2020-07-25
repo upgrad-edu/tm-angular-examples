@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { BookingRequest } from './book';
 import { BookService } from './book.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -16,24 +17,28 @@ export class BookComponent implements OnInit, OnDestroy {
     private location: Location,
     private route: ActivatedRoute,
     private router: Router,
-    private bookService:BookService
+    private bookService: BookService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.sub = this.route
-      .queryParams
-      .subscribe((params: BookingRequest) => {
-        const receivedParams = JSON.parse(JSON.stringify(params));
-        receivedParams.bookingDate = receivedParams.bookingDate.replace('T', ' ').substring(0, 19);
-        this.bookingRequest = receivedParams;
-        console.log(this.bookingRequest)
-      });
+    this.sub = this.route.queryParams.subscribe((params: BookingRequest) => {
+      const receivedParams = JSON.parse(JSON.stringify(params));
+      receivedParams.bookingDate = receivedParams.bookingDate
+        .replace('T', ' ')
+        .substring(0, 19);
+      this.bookingRequest = receivedParams;
+      console.log(this.bookingRequest);
+    });
   }
 
   bookMovie() {
     const bookingRequest = JSON.parse(JSON.stringify(this.bookingRequest));
     delete bookingRequest['name'];
-    this.bookService.bookMovie(bookingRequest).subscribe(res => console.log(res));
+    this.bookService.bookMovie(bookingRequest).subscribe((res) => {
+      this.toastr.success('Confirmed!', 'Movie successfully booked.');
+      this.router.navigate(['home'])
+    });
   }
 
   ngOnDestroy() {

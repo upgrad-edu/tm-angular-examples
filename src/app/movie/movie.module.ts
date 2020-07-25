@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { BookComponent } from './movie/book/book.component';
 import { SearchComponent } from './movie/search/search.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     MovieComponent,
@@ -27,6 +29,8 @@ import { AgGridModule } from 'ag-grid-angular';
     BsDatepickerModule.forRoot(),
     FormsModule,
     AgGridModule.withComponents([]),
+    ToastrModule.forRoot(),
+    SharedModule
   ],
 })
 export class MovieModule {}

@@ -51,9 +51,12 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.sub = this.activatedRoute.params.subscribe((params) => {
       this.searchService.movies().subscribe((res: any[]) => {
-        this.rowData = res.filter(
-          (movie) => movie.name.indexOf(params.movieName) > -1
-        );
+        this.rowData = res.filter((movie) => {
+          const movieName = movie.name.toLowerCase();
+          return movieName.indexOf(params.movieName.toLowerCase()) > -1
+            ? true
+            : false;
+        });
       });
     });
   }

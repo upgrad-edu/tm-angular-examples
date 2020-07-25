@@ -1,7 +1,7 @@
 <div class="card">
   <img src="{{card.coverURL}}"  (click)="moreDetails()" class="card-img-top img-thumbnail clickable" alt="..." />
   <div class="card-body">
-    <h5 class="card-title clickable" (click)="moreDetails()">{{ card.name }}</h5>
+    <h5 class="card-title clickable" (click)="moreDetails()">{{ card.name | uppercase }}</h5>
     <p class="card-text">
       {{ card.description }}
     </p>

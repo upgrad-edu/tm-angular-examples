@@ -14,10 +14,10 @@ export class CustomInterceptorService implements HttpInterceptor {
 
   skipRoute(api, request) {
     console.log(request);
-    if (request.url.indexOf(api) > -1) {// added to cope with existing design of endpoints.
+    if (request.url.indexOf(api) > -1 && request.url.indexOf('bookings') < 0) {// added to cope with existing design of endpoints.
       return true;
     } else {
-      if (request.method === 'GET') {
+      if (request.method === 'GET' && request.url.indexOf('bookings') < 0) {
         return true;
       }
       return false;
