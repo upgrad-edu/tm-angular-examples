@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { SearchService } from './search.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -39,7 +38,6 @@ export class SearchComponent implements OnInit {
   ];
 
   rowData: any = [];
-  sub: Subscription;
 
   constructor(
     private location: Location,
@@ -49,7 +47,7 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.sub = this.activatedRoute.params.subscribe((params) => {
+    this.activatedRoute.params.subscribe((params) => {
       this.searchService.movies().subscribe((res: any[]) => {
         this.rowData = res.filter((movie) => {
           const movieName = movie.name.toLowerCase();
