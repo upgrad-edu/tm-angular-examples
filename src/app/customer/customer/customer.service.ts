@@ -7,7 +7,7 @@ import { API } from '../../shared/service/api';
 })
 export class CustomerService {
   hosturl = environment.hosturl;
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getBookings(customerId: number) {
     return this.httpClient.get(`${this.hosturl}${API.CUSTOMERS}/${customerId}/${API.BOOK}`);

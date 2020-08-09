@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   movies: Movie[] = [];
-  constructor(private dashboardService: DashboardService, private router: Router) {}
+  constructor(private dashboardService: DashboardService, private router: Router) { }
 
   ngOnInit(): void {
     this.dashboardService.movies().subscribe((res: Movie[]) => {
       this.movies = res;
+      console.log('movie dat', res);
     });
   }
 

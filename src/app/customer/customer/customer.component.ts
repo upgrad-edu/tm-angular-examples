@@ -16,13 +16,16 @@ export class CustomerComponent implements OnInit {
     private location: Location,
     private customerService: CustomerService,
     private authenticationService: AuthenticationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const customerId = this.authenticationService.getUser().customerId;
     this.customerService
       .getBookings(customerId)
-      .subscribe((res: Booking[]) => (this.bookings = res));
+      .subscribe((res: Booking[]) => {
+        this.bookings = res;
+        console.log('my booking', res);
+      });
   }
   goBack() {
     this.location.back();

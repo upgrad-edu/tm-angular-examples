@@ -15,11 +15,7 @@
           <th scope="col">Status</th>
           <th scope="col">Theatres</th>
           <th scope="col">
-            <button
-              type="button"
-              [routerLink]="'/movie/add'"
-              class="btn btn-sm btn-secondary"
-            >
+            <button type="button" [routerLink]="'/movie/add'" class="btn btn-sm btn-secondary">
               Add Movie
             </button>
           </th>
@@ -29,14 +25,10 @@
         <tr *ngFor="let movie of movies">
           <th scope="row">{{ movie.name }}</th>
           <td>{{ movie.releaseDate }}</td>
-          <td>{{ movie.statusId === "1" ? "Release" : "Upcoming" }}</td>
-          <td>{{ movie.theareIds }}</td>
+          <td>{{ movie.statusId === 1 ? "Release" : "Upcoming" }}</td>
+          <td>{{ movie.theatreIds[0] | theatreName }}</td>
           <td>
-            <button
-              type="button"
-              (click)="edit(movie)"
-              class="btn btn-sm btn-secondary"
-            >
+            <button type="button" (click)="edit(movie)" class="btn btn-sm btn-secondary">
               Edit
             </button>
           </td>

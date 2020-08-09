@@ -8,10 +8,11 @@ import { BookingRequest } from './book';
 })
 export class BookService {
   hosturl = environment.hosturl;
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   bookMovie(bookingRequest: BookingRequest) {
-    const token = localStorage.getItem('jwtToken');
+    console.table(bookingRequest);
+    // const token = localStorage.getItem('jwtToken');
     return this.httpClient.post(`${this.hosturl}${API.BOOK}`, bookingRequest);
   }
 }

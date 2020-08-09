@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Theatre } from './theatre';
+import { TheatreService } from './theatre.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-theatre',
@@ -18,7 +20,11 @@ export class TheatreComponent implements OnInit {
   theatreForm: FormGroup;
   theatre = new Theatre();
 
-  constructor(private location: Location, private fb: FormBuilder) {}
+  constructor(
+    private location: Location,
+    private fb: FormBuilder,
+    private theatreService: TheatreService,
+    private router: Router) { }
   goBack() {
     this.location.back();
   }
@@ -45,6 +51,12 @@ export class TheatreComponent implements OnInit {
   addTheatre() {
     console.log(this.theatreForm);
     console.log('Saved: ' + JSON.stringify(this.theatreForm.value));
+
+    this.theatreService.addTheatre(this.theatreForm.value).pipe().subscribe(
+      (res: any) => {
+        console.log('res', res);
+        this.router.navigate(['/login']);
+      });
   }
 
   updateValidator() {

@@ -5,10 +5,12 @@ import { Subscription } from 'rxjs';
 import { BookingRequest } from './book';
 import { BookService } from './book.service';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss'],
+  styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit, OnDestroy {
   bookingRequest: BookingRequest = null;
@@ -18,8 +20,8 @@ export class BookComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private bookService: BookService,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.sub = this.route.queryParams.subscribe((params: BookingRequest) => {
@@ -35,9 +37,10 @@ export class BookComponent implements OnInit, OnDestroy {
   bookMovie() {
     const bookingRequest = JSON.parse(JSON.stringify(this.bookingRequest));
     delete bookingRequest['name'];
-    this.bookService.bookMovie(bookingRequest).subscribe((res) => {
+    console.log('bookingRequest', bookingRequest);
+    this.bookService.bookMovie(bookingRequest).pipe().subscribe((res) => {
       this.toastr.success('Confirmed!', 'Movie successfully booked.');
-      this.router.navigate(['home'])
+      this.router.navigate(['home']);
     });
   }
 

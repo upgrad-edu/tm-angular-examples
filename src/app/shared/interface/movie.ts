@@ -7,6 +7,6 @@ export interface Movie {
   trailerURL: string;
   languageId: string;
   statusId: number;
-  theatreId: any[];
+  theatreIds: any[];
   movieId?: number;
 }

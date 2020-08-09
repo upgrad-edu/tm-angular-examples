@@ -28,6 +28,10 @@ export class TopNavComponent implements OnInit {
       route: 'dashboard',
     },
     {
+      label: 'Add Theatre',
+      route: 'theatre/add',
+    },
+    {
       label: 'Logout',
       route: 'login',
     },
@@ -38,7 +42,7 @@ export class TopNavComponent implements OnInit {
     private loginService: LoginService,
     private authenticationService: AuthenticationService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userSub = this.loginService.user.subscribe((user) => {
@@ -72,6 +76,9 @@ export class TopNavComponent implements OnInit {
         break;
       case 'dashboard':
         this.router.navigate(['/dashboard']);
+        break;
+      case 'theatre/add':
+        this.router.navigate(['/theatre/add']);
         break;
       case 'customer':
         this.router.navigate(['/customer']);

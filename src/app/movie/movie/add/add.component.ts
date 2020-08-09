@@ -21,7 +21,7 @@ export class AddComponent implements OnInit {
     private addService: AddService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.sub = this.activatedRoute.params.subscribe((params) => {
@@ -68,16 +68,16 @@ export class AddComponent implements OnInit {
   }
 
   addMovie(addMovieForm: NgForm) {
-    console.log(addMovieForm.form);
-    console.log('Saved: ' + JSON.stringify(addMovieForm.value));
-    console.log(this.movie);
+    // console.log(addMovieForm.form);
+    // console.log('Saved: ' + JSON.stringify(addMovieForm.value));
+    // console.log(this.movie);
     this.addService.addMovie(this.movie).subscribe(
       (res) => this.router.navigate(['/home']),
       (err) =>
         (this.addError =
-          err.error && err.error.errorMessage
-            ? err.error.errorMessage
-            : err.error.error)
+          err.error && err.error?.errorMessage
+            ? err.error?.errorMessage
+            : err.error?.error)
     );
   }
 
@@ -89,9 +89,9 @@ export class AddComponent implements OnInit {
       (res) => this.router.navigate(['/home']),
       (err) =>
         (this.addError =
-          err.error && err.error.errorMessage
-            ? err.error.errorMessage
-            : err.error.error)
+          err.error && err.error?.errorMessage
+            ? err.error?.errorMessage
+            : err.error?.error)
     );
   }
 }
