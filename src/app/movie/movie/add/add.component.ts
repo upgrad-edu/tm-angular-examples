@@ -14,7 +14,7 @@ export class AddComponent implements OnInit {
   movie = new Movie();
   addError: any;
   sub: Subscription;
-  edit: boolean = false;
+  edit = false;
   actionLabel: string;
   constructor(
     private location: Location,
@@ -59,20 +59,17 @@ export class AddComponent implements OnInit {
     this.location.back();
   }
 
-  addUpdateMovie(movieForm: NgForm) {
+  addUpdateMovie() {
     if (this.edit) {
-      this.updateMovie(movieForm);
+      this.updateMovie();
     } else {
-      this.addMovie(movieForm);
+      this.addMovie();
     }
   }
 
-  addMovie(addMovieForm: NgForm) {
-    // console.log(addMovieForm.form);
-    // console.log('Saved: ' + JSON.stringify(addMovieForm.value));
-    // console.log(this.movie);
+  addMovie() {
     this.addService.addMovie(this.movie).subscribe(
-      (res) => this.router.navigate(['/home']),
+      (res) => this.router.navigate(['/dashboard']),
       (err) =>
         (this.addError =
           err.error && err.error?.errorMessage
@@ -81,12 +78,9 @@ export class AddComponent implements OnInit {
     );
   }
 
-  updateMovie(movieForm) {
-    console.log(movieForm.form);
-    console.log('Saved: ' + JSON.stringify(movieForm.value));
-    console.log(this.movie);
+  updateMovie() {
     this.addService.updateMovie(this.movie).subscribe(
-      (res) => this.router.navigate(['/home']),
+      (res) => this.router.navigate(['/dashboard']),
       (err) =>
         (this.addError =
           err.error && err.error?.errorMessage

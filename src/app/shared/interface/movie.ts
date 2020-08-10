@@ -4,7 +4,7 @@ export interface Movie {
   duration: string;
   name: string;
   releaseDate: string;
-  trailerURL: string;
+  trailerURL: any;
   languageId: string;
   statusId: number;
   theatreIds: any[];

@@ -7,31 +7,26 @@ import {
   DoCheck,
 } from '@angular/core';
 import { Movie } from '../interface/movie';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
-  @Input('card') card: Movie;
-  constructor(private router: Router) {}
-  moreDetails() {
-    this.router.navigate([`movie/${this.card.movieId}`])
-  }
-  ngOnInit(): void {}
+export class CardComponent implements OnInit {
 
-  ngOnChanges() {
-    console.log(`ngOnChanges - data is ${this.card}`);
-  }
-  ngDoCheck() {
-    console.log('ngDoCheck');
-  }
-  ngOnDestroy() {
-    console.log('ngOnDestroy');
+  @Input() card: Movie;
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void { }
+
+  moreDetails() {
+    this.router.navigate([`movie/${this.card.movieId}`]);
   }
 
   viewShows() {
-    this.router.navigate([`movie/${this.card.movieId}/shows`])
+    this.router.navigate([`movie/${this.card.movieId}/shows`]);
   }
 }

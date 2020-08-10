@@ -37,15 +37,6 @@ export class TheatreComponent implements OnInit {
       movieId: '',
       bookings: [],
     });
-
-    // this.theatreForm = new FormGroup({
-    //   theatreName: new FormControl(),
-    //   noOfSeats: new FormControl(),
-    //   ticketPrice: new FormControl(),
-    //   cityId: new FormControl(),
-    //   movieId: new FormControl(),
-    //   bookings: new FormControl(),
-    // });
   }
 
   addTheatre() {
