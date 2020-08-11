@@ -4,4 +4,4 @@ export const API = {
     SIGNUP: 'customers',
     BOOK: 'bookings',
     CUSTOMERS: 'customers'
-}
+};

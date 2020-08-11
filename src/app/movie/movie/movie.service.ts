@@ -8,6 +8,6 @@ export class MovieService {
   constructor() { }
 
   log() {
-    console.log('movie service')
+    console.log('movie service');
   }
 }

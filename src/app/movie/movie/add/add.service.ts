@@ -20,7 +20,7 @@ export class AddService {
 
   updateMovie(movie: Movie) {
     const movieRequest = JSON.parse(JSON.stringify(movie));
-    delete movieRequest['movieId'];
+    delete movieRequest.movieId;
     return this.httpClient.put(`${this.hosturl}${API.MOVIE}/${movie.movieId}`, movieRequest);
   }
 }

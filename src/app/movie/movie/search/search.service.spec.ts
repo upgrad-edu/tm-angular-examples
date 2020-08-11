@@ -1,12 +1,9 @@
-import { SearchService } from './search.service';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
 import { TestBed, getTestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { SearchService } from './search.service';
 import { API } from 'src/app/shared/service/api';
 
-describe('SearchService', () => {
+describe('Search Service', () => {
 
   let injector;
   let httpMock: HttpTestingController;
@@ -27,15 +24,19 @@ describe('SearchService', () => {
   ];
 
   beforeEach(() => {
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [SearchService],
+      providers: [SearchService]
     });
 
     injector = getTestBed();
     httpMock = injector.get(HttpTestingController);
+
   });
-  describe('GET movies', () => {
+
+  describe('GET Movies', () => {
+
     let searchService: SearchService;
     let httpTestingController: HttpTestingController;
 
@@ -44,7 +45,7 @@ describe('SearchService', () => {
       httpTestingController = TestBed.inject(HttpTestingController);
     });
 
-    it('Should get movies', () => {
+    it('should get movies', () => {
 
       const hosturl = 'http://localhost:7070/movie_app/v1/';
 

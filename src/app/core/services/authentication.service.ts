@@ -6,7 +6,7 @@ import { User } from '../components/login/login';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  localStorageKey: string = 'jwtToken';
+  localStorageKey = 'jwtToken';
   constructor(private router: Router) { }
 
   setToken(jwtToken): void {

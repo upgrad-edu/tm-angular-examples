@@ -1,7 +1,7 @@
 import { SearchComponent } from './search.component';
-import { Location } from '@angular/common';
 import { SearchService } from './search.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 let searchComponent: SearchComponent;
 let location: Location;
@@ -11,30 +11,35 @@ let activatedRoute: ActivatedRoute;
 
 const movie = {
   data: {
-    movieId: 0
+    movieId: 1
   }
 };
 
-describe('Search - Component', () => {
+describe('Search Component', () => {
+
   beforeEach(() => {
+
     location = jasmine.createSpyObj('location', ['back']);
     searchService = jasmine.createSpyObj('searchService', ['movies']);
     router = jasmine.createSpyObj('router', ['navigate']);
     activatedRoute = jasmine.createSpyObj('activatedRoute', ['activatedRoute']);
+
     searchComponent = new SearchComponent(location, searchService, router, activatedRoute);
+
   });
 
-  it('Should create SearchComponent', () => {
+  it('should create searchComponent', () => {
     expect(searchService).toBeDefined();
   });
 
-  it('Should call navigate', () => {
+  it('should call navigate', () => {
     searchComponent.onRowClicked(movie);
     expect(router.navigate).toHaveBeenCalled();
   });
 
-  it('Should call back', () => {
+  it('should call goback', () => {
     searchComponent.goBack();
     expect(location.back).toHaveBeenCalled();
   });
+
 });

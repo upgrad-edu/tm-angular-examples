@@ -16,7 +16,7 @@ export class ShowsListingComponent implements OnInit {
 
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   movie: Movie = null;
-  noOfSeats: number = 1;
+  noOfSeats = 1;
   bookingDate: any = null;
   constructor(
     private location: Location,

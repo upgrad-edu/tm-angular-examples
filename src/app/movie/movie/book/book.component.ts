@@ -33,7 +33,7 @@ export class BookComponent implements OnInit {
 
   bookMovie() {
     const bookingRequest = JSON.parse(JSON.stringify(this.bookingRequest));
-    delete bookingRequest['name'];
+    delete bookingRequest.name;
     this.bookService.bookMovie(bookingRequest).pipe().subscribe((res) => {
       this.toastr.success('Confirmed!', 'Movie successfully booked.');
       this.router.navigate(['home']);

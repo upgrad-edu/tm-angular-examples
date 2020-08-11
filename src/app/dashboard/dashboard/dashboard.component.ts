@@ -20,6 +20,6 @@ export class DashboardComponent implements OnInit {
   }
 
   edit(movie) {
-    this.router.navigate([`/movie/edit/${movie.movieId}`])
+    this.router.navigate([`/movie/edit/${movie.movieId}`]);
   }
 }

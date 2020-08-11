@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
     private searchService: SearchService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {

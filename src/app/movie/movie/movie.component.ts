@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from './movie.service'
+import { MovieService } from './movie.service';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -15,6 +15,6 @@ export class MovieComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movieService.log()
+    this.movieService.log();
   }
 }

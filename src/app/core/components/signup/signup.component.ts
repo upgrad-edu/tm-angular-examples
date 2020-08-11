@@ -13,9 +13,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   signup = new Signup();
   signupError: HttpErrorResponse = null;
   routeSubs: any;
-  constructor(private signupService: SignupService, private router: Router) {}
+  constructor(private signupService: SignupService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngOnDestroy() {
     if (this.routeSubs) {
@@ -44,6 +44,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   formatRequest() {
-    this.signup.userTypeId = this.router.url.indexOf('admin') > -1 ? '2' : '1'; //customer and 2 for Admin
+    this.signup.userTypeId = this.router.url.indexOf('admin') > -1 ? '2' : '1';
   }
 }

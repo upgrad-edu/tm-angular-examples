@@ -47,12 +47,14 @@ export class TopNavComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.user.subscribe((user) => {
       this.user = user;
+      this.updateNavLinks();
     });
 
     if (this.user.userTypeId === null) {
       this.user = this.authenticationService.getUser();
+      this.updateNavLinks();
     }
-    this.updateNavLinks();
+
   }
 
   searchMovie() {
