@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ShowsListingService } from './shows-listing.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Movie } from '../movie';
 import { AuthenticationService } from '../../../core/services/authentication.service';
 import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-shows-listing',
   templateUrl: './shows-listing.component.html',
@@ -13,8 +13,8 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class ShowsListingComponent implements OnInit {
+
   numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  sub: Subscription;
   movie: Movie = null;
   noOfSeats: number = 1;
   bookingDate: any = null;
@@ -28,11 +28,10 @@ export class ShowsListingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.activatedRoute.params.subscribe((params) => {
+    this.activatedRoute.params.subscribe((params) => {
       this.showsListingService
         .getMovie(params.movieId)
         .subscribe((res: Movie) => {
-          console.log('show movie', res);
           this.movie = res;
         });
     });

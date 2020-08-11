@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../components/login/login';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   localStorageKey: string = 'jwtToken';
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   setToken(jwtToken): void {
     localStorage.setItem(this.localStorageKey, jwtToken);

@@ -10,6 +10,7 @@ import { Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
 import { API } from '../../../shared/service/api';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +21,7 @@ export class LoginService {
   constructor(
     private httpClient: HttpClient,
     private authenticationService: AuthenticationService
-  ) {}
+  ) { }
 
   login(loginDetail: Login) {
     return this.httpClient

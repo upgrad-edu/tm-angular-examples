@@ -20,7 +20,7 @@
         </form>
       </li>
     </ul>
-    <div class="btn-group" dropdown *ngIf="user?.firstName">
+    <div class="btn-group" dropdown *ngIf="user?.userTypeId else notLoggedIn">
       <button id="button-animated" dropdownToggle type="button" class="btn btn-link dropdown-toggle"
         aria-controls="dropdown-animated">{{user.firstName}} <span class="caret"></span>
       </button>
@@ -29,9 +29,12 @@
         <li class="dropdown-item clickable" (click)="viewLink(link)" *ngFor="let link of navLinks">{{ link.label }}</li>
       </ul>
     </div>
-    <ul class="navbar-nav ml-auto" *ngIf="!user">
-      <a class="btn btn-sm btn-primary clickable" [routerLink]="'/login'">Login</a> |
-      <a class="btn btn-sm btn-primary clickable" [routerLink]="'/signup'">Signup</a>
-    </ul>
+    <ng-template #notLoggedIn>
+      <ul class="navbar-nav ml-auto">
+        <a class="btn btn-sm btn-primary clickable" [routerLink]="'/login'">Login</a> |
+        <a class="btn btn-sm btn-primary clickable" [routerLink]="'/signup'">Signup</a>
+      </ul>
+    </ng-template>
+
   </div>
 </nav>

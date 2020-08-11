@@ -2,9 +2,6 @@ import {
   Component,
   OnInit,
   Input,
-  OnChanges,
-  OnDestroy,
-  DoCheck,
 } from '@angular/core';
 import { Movie } from '../interface/movie';
 import { Router } from '@angular/router';

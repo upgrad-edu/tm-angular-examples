@@ -1,5 +1,5 @@
-import { Component, OnInit, SecurityContext } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Movie } from 'src/app/shared/interface/movie';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DetailsService } from './details.service';
@@ -11,14 +11,16 @@ import { Location } from '@angular/common';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
+
   movie: Movie;
+
   constructor(
     private domSanitizer: DomSanitizer,
     private router: Router,
     private detailsService: DetailsService,
     private activatedRoute: ActivatedRoute,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
@@ -32,12 +34,12 @@ export class DetailsComponent implements OnInit {
   }
 
   getMovieDetails(movieId: number) {
-    this.detailsService.movieDetails(movieId).subscribe(
-      (res: Movie) => {
-        this.movie = res;
-        this.movie.trailerURL = this.domSanitizer.bypassSecurityTrustResourceUrl(res.trailerURL);
-        console.log('res', res);
-      });
+    this.detailsService.movieDetails(movieId)
+      .subscribe(
+        (res: Movie) => {
+          this.movie = res;
+          this.movie.trailerURL = this.domSanitizer.bypassSecurityTrustResourceUrl(res.trailerURL);
+        });
   }
 
   viewShows() {

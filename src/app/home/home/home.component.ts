@@ -7,8 +7,10 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
   ongoingMovies: Movie[] = [];
   upcomingMovies: Movie[] = [];
+
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {

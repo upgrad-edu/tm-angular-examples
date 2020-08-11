@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../components/login/login.service';
-import { Subscription } from 'rxjs';
 import { User } from '../components/login/login';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-top-nav',
   templateUrl: './top-nav.component.html',
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class TopNavComponent implements OnInit {
   movieName: string = null;
+  user: User = new User();
   navLinks = [];
   customerNavLinks = [
     {
@@ -36,8 +37,7 @@ export class TopNavComponent implements OnInit {
       route: 'login',
     },
   ];
-  userSub: Subscription;
-  user: User = null;
+
   constructor(
     private loginService: LoginService,
     private authenticationService: AuthenticationService,
@@ -45,15 +45,14 @@ export class TopNavComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userSub = this.loginService.user.subscribe((user) => {
+    this.loginService.user.subscribe((user) => {
       this.user = user;
-      this.updateNavLinks();
     });
 
-    if (!this.user) {
+    if (this.user.userTypeId === null) {
       this.user = this.authenticationService.getUser();
-      this.updateNavLinks();
     }
+    this.updateNavLinks();
   }
 
   searchMovie() {
@@ -72,6 +71,7 @@ export class TopNavComponent implements OnInit {
     console.log(link);
     switch (link.route) {
       case 'login':
+        this.loginService.user.next(new User());
         this.authenticationService.logout();
         break;
       case 'dashboard':

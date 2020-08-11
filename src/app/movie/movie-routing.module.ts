@@ -4,9 +4,10 @@ import { MovieComponent } from './movie/movie.component';
 import { ShowsListingComponent } from './movie/shows-listing/shows-listing.component';
 import { DetailsComponent } from './movie/details/details.component';
 import { AddComponent } from './movie/add/add.component';
-import { AuthGuardService } from '../core/services/auth-guard.service';
 import { BookComponent } from './movie/book/book.component';
 import { SearchComponent } from './movie/search/search.component';
+import { AuthGuardGuard } from '../core/services/auth-guard.guard';
+
 const routes: Routes = [
   {
     path: 'movie',
@@ -15,14 +16,14 @@ const routes: Routes = [
       {
         path: 'edit/:movieId',
         component: AddComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'book',
         component: BookComponent,
-        canActivate: [AuthGuardService],
+        canActivate: [AuthGuardGuard]
       },
-      { path: 'add', component: AddComponent, canActivate: [AuthGuardService] },
+      { path: 'add', component: AddComponent, canActivate: [AuthGuardGuard] },
       { path: ':id', component: DetailsComponent },
       {
         path: ':movieId/shows',
@@ -37,4 +38,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class MovieRoutingModule {}
+export class MovieRoutingModule { }

@@ -11,7 +11,6 @@ export class AddService {
   constructor(private httpClient: HttpClient) { }
 
   addMovie(movie: Movie) {
-    console.log('movie to add', movie);
     return this.httpClient.post(`${this.hosturl}${API.MOVIE}/`, movie);
   }
 
